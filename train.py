@@ -144,7 +144,7 @@ train_sketch_paths = sketch_paths.tolist()
 #Do a train and test split
 sketch_paths_per_class = {}
 for sketchPath in sketch_paths:
-    className = sketchPath.split('/')[-2]
+    className = sketchPath.split(b'/')[-2]
     if className not in sketch_paths_per_class:
         sketch_paths_per_class[className] = []
     sketch_paths_per_class[className].append(sketchPath)
@@ -209,7 +209,7 @@ for ii in range(len(test_sketch_paths)):
 
 
 def getImagePath(sketchPath):
-    tempArr = sketchPath.replace('sketch', 'photo').split('-')
+    tempArr = sketchPath.replace('sketch', 'photo').split(b'-')
     imagePath = ''
     for idx in range(len(tempArr)-1):
         imagePath = imagePath + tempArr[idx] + '-'
@@ -253,7 +253,7 @@ for idx in range(len(image_paths_ext)):
 
 con_image_paths_ext = []
 for path in image_paths_ext:
-    className = path.split('/')[-2]
+    className = path.split(b'/')[-2]
     if className not in trainClasses:
         con_image_paths_ext.append(path)
 
@@ -270,9 +270,9 @@ nbrs = NearestNeighbors(n_neighbors=NEIGH_NUM, metric='cosine',
 #testing on test queries
 
 # image_classes = np.array([path.split('/')[-2] for path in image_paths_ext])
-image_classes = np.array([path.split('/')[-2] for path in con_image_paths_ext])
+image_classes = np.array([path.split(b'/')[-2] for path in con_image_paths_ext])
 
-test_sketch_classes = np.array([path.split('/')[-2]
+test_sketch_classes = np.array([path.split(b'/')[-2]
                                 for path in test_sketch_paths])
 
 
