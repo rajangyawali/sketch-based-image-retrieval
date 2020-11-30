@@ -1,4 +1,3 @@
-from sklearn.neighbors import NearestNeighbors, LSHForest
 from keras.layers import Input, Dense, Lambda, Dropout, Flatten, concatenate
 from keras.models import Model, Sequential
 from keras.objectives import binary_crossentropy
